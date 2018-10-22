@@ -1,0 +1,26 @@
+/* 
+  LocaliableString.strings
+  Cinema
+
+  Created by stefano vecchiati on 22/10/2018.
+  Copyright © 2018 com.stefanovecchiati. All rights reserved.
+*/
+
+//Login
+kLoginTitle = "Accedi";
+kLoginEmail = "Email";
+kLoginPassword = "Password";
+kLoginButton = "Accedi";
+kLoginGoToSignup = "Crea il tuo account";
+
+
+//Signup
+kSignupTitle = "Registrati";
+kSignupRepeatPassword = "Ripeti password";
+kSignupButton = "Registrati";
+kSignupGoToLogin = "Già registrato? Accedi";
+
+// Alert
+kAlertLoginFailedEmptyLabelsTitle = "Campi vuoti";
+kAlertLoginFailedEmptyLabelsMessage = "Hai lasciato uno o più campi vuoti";
+kAlertOkButton = "Ok";
