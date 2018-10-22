@@ -68,12 +68,27 @@ class SignUpController: UIViewController {
         }
         
         guard !email.isEmpty && !password.isEmpty && !rePassword.isEmpty else {
-            let alert = UIAlertController(title: "kAlertLoginFailedEmptyLabelsTitle".localized, message: "kAlertLoginFailedEmptyLabelsMessage".localized, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "kAlertOkButton".localized, style: .cancel, handler: nil)
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
+            self.present(alertError(title: "kAlertLoginFailedEmptyLabelsTitle".localized, message: "kAlertLoginFailedEmptyLabelsMessage".localized), animated: true, completion: nil)
             return
         }
+        
+        guard email.isValidEmail() else {
+            self.present(alertError(title: "kAlertLoginFailedInvalidEmailTitle".localized, message: "kAlertLoginFailedInvalidEmailMessage".localized), animated: true, completion: nil)
+            return
+        }
+        
+        guard password == rePassword else {
+            self.present(alertError(title: "kAlertLoginFailedDifferentPasswordsTitle".localized, message: "kAlertLoginFailedDifferentPasswordsMessage".localized), animated: true, completion: nil)
+            return
+        }
+        
+        guard password.count > 5 else {
+            self.present(alertError(title: "kAlertLoginFailedInvalidPasswordTitle".localized, message: "kAlertLoginFailedInvalidPasswordTitle".localized), animated: true, completion: nil)
+            return
+        }
+        
+        
+        
         
     }
     
@@ -93,5 +108,12 @@ class SignUpController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func alertError(title: String?, message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "kAlertOkButton".localized, style: .cancel, handler: nil)
+        alert.addAction(ok)
+        return alert
+    }
 
 }

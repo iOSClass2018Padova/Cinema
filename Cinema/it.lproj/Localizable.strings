@@ -21,6 +21,17 @@ kSignupButton = "Registrati";
 kSignupGoToLogin = "Già registrato? Accedi";
 
 // Alert
+kAlertOkButton = "Ok";
+
 kAlertLoginFailedEmptyLabelsTitle = "Campi vuoti";
 kAlertLoginFailedEmptyLabelsMessage = "Hai lasciato uno o più campi vuoti";
-kAlertOkButton = "Ok";
+
+kAlertLoginFailedInvalidEmailTitle = "Mail non valida";
+kAlertLoginFailedInvalidEmailMessage = "L'indirizzo mail inserito non è valido";
+
+kAlertLoginFailedDifferentPasswordsTitle = "Password diverse";
+kAlertLoginFailedDifferentPasswordsMessage = "Le due password inserite non coincidono";
+
+kAlertLoginFailedInvalidPasswordTitle = "Password non valida";
+kAlertLoginFailedInvalidPasswordMessage = "La password deve essere lunga almeno sei caratteri";
+

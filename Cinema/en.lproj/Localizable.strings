@@ -5,3 +5,34 @@
   Created by stefano vecchiati on 22/10/2018.
   Copyright © 2018 com.stefanovecchiati. All rights reserved.
 */
+
+//Login
+kLoginTitle = "Login";
+kLoginEmail = "Email";
+kLoginPassword = "Password";
+kLoginButton = "Login";
+kLoginGoToSignup = "Create your account";
+
+
+//Signup
+kSignupTitle = "Signup";
+kSignupRepeatPassword = "Repeat password";
+kSignupButton = "Signup";
+kSignupGoToLogin = "Already signed? Login";
+
+// Alert
+kAlertOkButton = "Ok";
+
+kAlertLoginFailedEmptyLabelsTitle = "Empty fields";
+kAlertLoginFailedEmptyLabelsMessage = "You left one or more fields empty";
+
+kAlertLoginFailedInvalidEmailTitle = "Invalid mail";
+kAlertLoginFailedInvalidEmailMessage = "Your email is invalid";
+
+kAlertLoginFailedDifferentPasswordsTitle = "Different passwords";
+kAlertLoginFailedDifferentPasswordsMessage = "The confirmation password is different";
+
+kAlertLoginFailedInvalidPasswordTitle = "Invalid password";
+kAlertLoginFailedInvalidPasswordMessage = "Password must be six characters long";
+
+
