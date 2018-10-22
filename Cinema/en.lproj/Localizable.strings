@@ -35,4 +35,6 @@ kAlertLoginFailedDifferentPasswordsMessage = "The confirmation password is diffe
 kAlertLoginFailedInvalidPasswordTitle = "Invalid password";
 kAlertLoginFailedInvalidPasswordMessage = "Password must be six characters long";
 
-
+// user login failed
+kUserLoggedFailTitle = "Oppsss";
+kUserLoggedFailMessage = "The user provided cannot be found";
