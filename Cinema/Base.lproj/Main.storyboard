@@ -32,7 +32,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UsN-DJ-jcA"/>
+                    <navigationItem key="navigationItem" id="UsN-DJ-jcA">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="0RE-4R-cQ7">
+                            <connections>
+                                <action selector="logoutAction:" destination="BYZ-38-t0r" id="maB-Jk-nPI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

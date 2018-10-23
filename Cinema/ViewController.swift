@@ -15,6 +15,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func logoutAction(_ sender: Any) {
+        UserDefaults.standard.set(nil, forKey: "access_token")
+        
+        GeneralUtils.share.reloadGenericViewController(storyboardName: "Login", controllerIdentifier: "Login")
+    }
+    
 }
 

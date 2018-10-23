@@ -19,5 +19,12 @@ class GeneralUtils: NSObject {
         return alert
     }
     
+    func reloadGenericViewController(storyboardName : String, controllerIdentifier: String) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let setViewController = mainStoryboard.instantiateViewController(withIdentifier: controllerIdentifier)
+        let rootViewController = UIApplication.shared.windows.last?.rootViewController
+        rootViewController?.present(setViewController, animated: true, completion: nil)
+    }
+    
 
 }
