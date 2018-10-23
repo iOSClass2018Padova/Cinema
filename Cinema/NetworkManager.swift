@@ -11,25 +11,31 @@ import Alamofire
 
 class NetworkManager: NSObject {
     
+    private static let basicAdress = "http://api-staging.emotifood.it/v1/"
+    private static var token : String?
+    
     // MARK: Request Header
     
-    private func authorizationHeader() -> HTTPHeaders {
+    private static func authorizationHeader() -> HTTPHeaders {
         
-        guard let token = <#String#> else {
+        guard let token = token else {
             return ["Authorization": "bearer "]
         }
-        
-        return ["Authorization": "bearer "]
-        
+
+        return ["Authorization": "bearer " + token]
+
     }
     
-    static func access(email: String, password: String, completion: @escaping (Bool) -> ()) {
+    static func login(email: String, password: String, completion: @escaping (Bool) -> ()) {
         
-        let param : Parameters? = nil
+        let param : Parameters? = ["grant_type": "password",
+                                   "email": email,
+                                   "password": password]
         let header : HTTPHeaders? = nil
         
-        guard let url = URL(string: <#String#>) else {
+        guard let url = URL(string: basicAdress + "oauth/token") else {
             completion(false)
+            return
         }
         
         Alamofire.request(url,
@@ -40,9 +46,18 @@ class NetworkManager: NSObject {
             .validate()
             .responseJSON { response in
                 
-            debugPrint(response)
+            debugPrint(response.result)
             switch(response.result) {
             case .success(_):
+                
+                guard let values = response.result.value as? [String : Any] else {
+                    completion(false)
+                    return
+                }
+                
+                self.token = values["access_token"] as? String
+                
+                
                 completion(true)
 
 
@@ -52,6 +67,36 @@ class NetworkManager: NSObject {
             }
         }
         
+    }
+    
+    static func getUser(completion: @escaping (Bool) -> ()) {
+        let param : Parameters? = nil
+        let header : HTTPHeaders? = authorizationHeader()
+        
+        guard let url = URL(string: basicAdress + "user") else {
+            completion(false)
+            return
+        }
+        
+        Alamofire.request(url,
+                          method: .get,
+                          parameters: param,
+                          encoding: JSONEncoding.default,
+                          headers: header)
+            .validate()
+            .responseJSON { response in
+                
+                debugPrint(response)
+                switch(response.result) {
+                case .success(_):
+                    completion(true)
+                    
+                    
+                case .failure(_):
+                    completion(false)
+                    
+                }
+        }
     }
 
 }

@@ -93,14 +93,13 @@ class LoginController: UIViewController {
             return
         }
         
-        let user = User.getObject(withId: email)
-        guard let u = user, u.password == password else {
-            self.present(GeneralUtils.share.alertError(title: "kUserLoggedFailTitle".localized, message: "kUserLoggedFailMessage".localized), animated: true, completion: nil)
-            return
+        NetworkManager.login(email: email, password: password) { (success) in
+            if success {
+                NetworkManager.getUser(completion: { (succes) in
+                    
+                })
+            }
         }
-        
-        
-        self.present(GeneralUtils.share.alertError(title: "EHII", message: "Trovato"), animated: true, completion: nil)
     }
     
     

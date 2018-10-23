@@ -87,9 +87,8 @@ class SignUpController: UIViewController {
             return
         }
         
-        
         User(email: email, password: password).save()
-        
+
         self.present(GeneralUtils.share.alertError(title: nil, message: "Utente salvato corretamente 🤓"), animated: true, completion: nil)
     }
     
