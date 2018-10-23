@@ -17,11 +17,11 @@ class NetworkManager: NSObject {
     
     private static func authorizationHeader() -> HTTPHeaders {
         
-        guard let token = UserDefaults.standard.string(forKey: "access_token") else {
-            return ["Authorization": "bearer "]
+        guard let headerInformation = LoginModel.getObject(withId: "access_token") else {
+            return ["Authorization": ""]
         }
 
-        return ["Authorization": "bearer " + token]
+        return ["Authorization": headerInformation.token_type + " " + headerInformation.access_token]
 
     }
     
@@ -54,7 +54,7 @@ class NetworkManager: NSObject {
                     return
                 }
                 
-                UserDefaults.standard.set(values["access_token"] as? String, forKey: "access_token")
+                LoginModel(access_token: values["access_token"] as! String, created_at: values["created_at"] as! Int, expires_in: values["expires_in"] as! Int, scope: values["scope"] as! String, token_type: values["token_type"] as! String).save()
                 
                 completion(true)
 
