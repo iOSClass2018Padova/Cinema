@@ -17,7 +17,7 @@ class NetworkManager: NSObject {
     
     private static func authorizationHeader() -> HTTPHeaders {
         
-        guard let headerInformation = LoginModel.getObject(withId: "access_token") else {
+        guard let headerInformation = LoginModel.all().first else {
             return ["Authorization": ""]
         }
 
@@ -49,12 +49,22 @@ class NetworkManager: NSObject {
             switch(response.result) {
             case .success(_):
                 
-                guard let values = response.result.value as? [String : Any] else {
+                guard let jsonData = response.data else {
                     completion(false)
                     return
                 }
                 
-                LoginModel(access_token: values["access_token"] as! String, created_at: values["created_at"] as! Int, expires_in: values["expires_in"] as! Int, scope: values["scope"] as! String, token_type: values["token_type"] as! String).save()
+                
+                do {
+                    
+                    let decoder = JSONDecoder()
+                    
+                    try decoder.decode(LoginModel.self, from: jsonData).save()
+                    
+                } catch let err {
+                    print(err)
+                    completion(false)
+                }
                 
                 completion(true)
 
@@ -130,3 +140,4 @@ class NetworkManager: NSObject {
     }
 
 }
+

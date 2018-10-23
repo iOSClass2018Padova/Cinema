@@ -9,39 +9,24 @@
 import Foundation
 import RealmSwift
 
-@objcMembers class LoginModel: Object {
+@objcMembers class LoginModel: Object, Codable {
     
     dynamic var access_token: String!
     dynamic var created_at: Int!
     dynamic var expires_in: Int!
     dynamic var scope: String!
     dynamic var token_type: String!
-    dynamic var id : String = "access_token"
-    
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-    
-    convenience init(access_token: String, created_at: Int, expires_in: Int, scope: String, token_type: String) {
-        self.init()
-        
-        self.access_token = access_token
-        self.created_at = created_at
-        self.expires_in = expires_in
-        self.scope = scope
-        self.token_type = token_type
-        
-    }
     
     func save(in realm: Realm = try! Realm(configuration: RealmUtils.config)) {
         do {
             try realm.write {
-                realm.add(self, update: true)
+                realm.deleteAll()
+                realm.add(self)
             }
         } catch {}
     }
     
-    static func getObject(in realm: Realm = try! Realm(configuration: RealmUtils.config), withId id : String) -> LoginModel? {
-        return realm.object(ofType: LoginModel.self, forPrimaryKey: id)
+    static func all(in realm: Realm = try! Realm(configuration: RealmUtils.config)) -> [LoginModel] {
+        return Array(realm.objects(LoginModel.self))
     }
 }
