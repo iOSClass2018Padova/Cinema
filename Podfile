@@ -7,5 +7,6 @@ target 'Cinema' do
 
   # Pods for Cinema
   pod 'RealmSwift'
+  pod 'Alamofire'
 
 end

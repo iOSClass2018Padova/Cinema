@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-@objcMembers class User: Object {
+@objcMembers class User: Object, Codable {
     dynamic var id : String!
     dynamic var email : String!
     dynamic var password : String!
