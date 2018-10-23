@@ -48,17 +48,18 @@ class LoginController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
-    
-    
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        UIApplication.shared.statusBarStyle = .default
+        
+    }
     
     
     
@@ -96,7 +97,9 @@ class LoginController: UIViewController {
         NetworkManager.login(email: email, password: password) { (success) in
             if success {
                 NetworkManager.getUser(completion: { (succes) in
-                    
+                    if success {
+                        self.performSegue(withIdentifier: "segueToMain", sender: self)
+                    }
                 })
             }
         }

@@ -12,13 +12,12 @@ import Alamofire
 class NetworkManager: NSObject {
     
     private static let basicAdress = "http://api-staging.emotifood.it/v1/"
-    private static var token : String?
     
     // MARK: Request Header
     
     private static func authorizationHeader() -> HTTPHeaders {
         
-        guard let token = token else {
+        guard let token = UserDefaults.standard.string(forKey: "access_token") else {
             return ["Authorization": "bearer "]
         }
 
@@ -55,8 +54,7 @@ class NetworkManager: NSObject {
                     return
                 }
                 
-                self.token = values["access_token"] as? String
-                
+                UserDefaults.standard.set(values["access_token"] as? String, forKey: "access_token")
                 
                 completion(true)
 
@@ -97,6 +95,38 @@ class NetworkManager: NSObject {
                     
                 }
         }
+    }
+    
+    static func checkToken(completion: @escaping (Bool) -> ()) {
+        
+        let param : Parameters? = nil
+        let header : HTTPHeaders? = authorizationHeader()
+        
+        guard let url = URL(string: basicAdress + "oauth/token/info") else {
+            completion(false)
+            return
+        }
+        
+        Alamofire.request(url,
+                          method: .get,
+                          parameters: param,
+                          encoding: JSONEncoding.default,
+                          headers: header)
+            .validate()
+            .responseJSON { response in
+                
+                debugPrint(response.result)
+                switch(response.result) {
+                case .success(_):
+                    completion(true)
+                    
+                    
+                case .failure(_):
+                    completion(false)
+                    
+                }
+        }
+        
     }
 
 }

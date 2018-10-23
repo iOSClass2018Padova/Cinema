@@ -85,6 +85,7 @@
                         <outlet property="titleOutlet" destination="YOJ-DA-qyo" id="ff3-1V-P26"/>
                         <outletCollection property="textFields" destination="nCb-VI-jwR" collectionClass="NSMutableArray" id="XWB-za-3ZZ"/>
                         <outletCollection property="textFields" destination="Hz1-U3-ttQ" collectionClass="NSMutableArray" id="Wvh-O2-2Qe"/>
+                        <segue destination="Kzc-S5-MQg" kind="show" identifier="segueToMain" id="wcp-qd-8V4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulZ-z9-iNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -94,7 +95,7 @@
         <!--Sign Up Controller-->
         <scene sceneID="lpx-R1-1mo">
             <objects>
-                <viewController id="HXC-kv-hUz" customClass="SignUpController" customModule="Cinema" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="HXC-kv-hUz" customClass="SignUpController" customModule="Cinema" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="34S-RT-53f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +138,7 @@
                                 </constraints>
                                 <state key="normal" title="Have already an account?"/>
                                 <connections>
-                                    <segue destination="on1-4d-WTS" kind="show" id="slv-nv-DDW"/>
+                                    <segue destination="on1-4d-WTS" kind="custom" customClass="DeckSegue" customModule="DeckTransition" id="slv-nv-DDW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,11 +173,23 @@
                         <outletCollection property="textFields" destination="irP-aq-oVg" collectionClass="NSMutableArray" id="CVL-je-s5Y"/>
                         <outletCollection property="textFields" destination="1zg-VH-JY7" collectionClass="NSMutableArray" id="fMt-Ui-N36"/>
                         <outletCollection property="textFields" destination="pHi-G9-qnP" collectionClass="NSMutableArray" id="eHE-Ng-zFx"/>
+                        <segue destination="Kzc-S5-MQg" kind="show" identifier="segueToMain" id="gkE-0w-urx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dzg-ig-bfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="789.35532233883066"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="jJo-PB-19t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="Main" id="Kzc-S5-MQg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wnk-tR-G2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="453"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gkE-0w-urx"/>
+    </inferredMetricsTieBreakers>
 </document>

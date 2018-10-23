@@ -24,6 +24,8 @@
 		7B39E9ED217E042C00959B28 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39E9EC217E042C00959B28 /* User.swift */; };
 		7B39E9EF217E054E00959B28 /* RealmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39E9EE217E054E00959B28 /* RealmUtils.swift */; };
 		7B39E9F1217E24A100959B28 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39E9F0217E24A100959B28 /* NetworkManager.swift */; };
+		7B39E9F4217F223100959B28 /* LoadingInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B39E9F3217F223100959B28 /* LoadingInfo.storyboard */; };
+		7B39E9F6217F230200959B28 /* LoadingInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39E9F5217F230200959B28 /* LoadingInfoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		7B39E9EC217E042C00959B28 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7B39E9EE217E054E00959B28 /* RealmUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtils.swift; sourceTree = "<group>"; };
 		7B39E9F0217E24A100959B28 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7B39E9F3217F223100959B28 /* LoadingInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingInfo.storyboard; sourceTree = "<group>"; };
+		7B39E9F5217F230200959B28 /* LoadingInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInfoController.swift; sourceTree = "<group>"; };
 		96D923E54CCEC38474934433 /* Pods_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,6 +136,7 @@
 		7B39E9A8217DBB2700959B28 /* Cinema */ = {
 			isa = PBXGroup;
 			children = (
+				7B39E9F2217F21FE00959B28 /* LoadingInfo */,
 				7B39E9EB217E040300959B28 /* Models */,
 				7B39E9D9217DD12200959B28 /* Access */,
 				7B39E9A9217DBB2700959B28 /* AppDelegate.swift */,
@@ -183,6 +188,15 @@
 				7B39E9EC217E042C00959B28 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7B39E9F2217F21FE00959B28 /* LoadingInfo */ = {
+			isa = PBXGroup;
+			children = (
+				7B39E9F3217F223100959B28 /* LoadingInfo.storyboard */,
+				7B39E9F5217F230200959B28 /* LoadingInfoController.swift */,
+			);
+			path = LoadingInfo;
 			sourceTree = "<group>";
 		};
 		8F3189F4F474DBD12139D232 /* Pods */ = {
@@ -304,6 +318,7 @@
 				7B39E9E2217DD7D800959B28 /* Localizable.strings in Resources */,
 				7B39E9D8217DBE4200959B28 /* Login.storyboard in Resources */,
 				7B39E9B4217DBB2800959B28 /* LaunchScreen.storyboard in Resources */,
+				7B39E9F4217F223100959B28 /* LoadingInfo.storyboard in Resources */,
 				7B39E9B1217DBB2800959B28 /* Assets.xcassets in Resources */,
 				7B39E9AF217DBB2700959B28 /* Main.storyboard in Resources */,
 			);
@@ -352,12 +367,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cinema/Pods-Cinema-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DeckTransition/DeckTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeckTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -375,6 +392,7 @@
 			files = (
 				7B39E9F1217E24A100959B28 /* NetworkManager.swift in Sources */,
 				7B39E9EA217DFE3E00959B28 /* GeneralUtils.swift in Sources */,
+				7B39E9F6217F230200959B28 /* LoadingInfoController.swift in Sources */,
 				7B39E9E8217DDA4500959B28 /* Extensions.swift in Sources */,
 				7B39E9AC217DBB2700959B28 /* ViewController.swift in Sources */,
 				7B39E9DB217DD15000959B28 /* LoginController.swift in Sources */,
@@ -573,10 +591,7 @@
 				DEVELOPMENT_TEAM = KLXGCD4J97;
 				INFOPLIST_FILE = Cinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanovecchiati.Cinema;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -593,10 +608,7 @@
 				DEVELOPMENT_TEAM = KLXGCD4J97;
 				INFOPLIST_FILE = Cinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanovecchiati.Cinema;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -612,11 +624,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLXGCD4J97;
 				INFOPLIST_FILE = CinemaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanovecchiati.CinemaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -633,11 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLXGCD4J97;
 				INFOPLIST_FILE = CinemaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanovecchiati.CinemaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -653,11 +657,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLXGCD4J97;
 				INFOPLIST_FILE = CinemaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanovecchiati.CinemaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -673,11 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLXGCD4J97;
 				INFOPLIST_FILE = CinemaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanovecchiati.CinemaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
